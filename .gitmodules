@@ -1,0 +1,3 @@
+[submodule "packages/maui"]
+	path = packages/maui
+	url = https://github.com/phamchautu/maui.git
