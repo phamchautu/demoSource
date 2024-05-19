@@ -1,13 +1,18 @@
 import React from 'react'
 import AppEntryView from './AppEntryView'
+import { NavigationScreenProp } from '@core/navigation/Navigator'
+import { getIsSignIn } from './AppEntrySelector'
+import { useAppSelector } from '@core/redux/reduxUtils'
 
-interface AppEntryContainerProps {
+interface AppEntryContainerProps extends NavigationScreenProp {
 
 }
 
 const AppEntryContainer = (props: AppEntryContainerProps) => {
+    const { navigation } = props
+    const isSignIn = useAppSelector((state) => getIsSignIn(state))
 
-    console.log('[Access screen]: AppEntry')
+    console.log('[isSignIn]', isSignIn)
 
     return (
         <AppEntryView />
