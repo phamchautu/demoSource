@@ -30,3 +30,8 @@ export enum TextSize {
     xs = 10,
     xxs = 8,
 }
+
+export enum Storage {
+    ACCESS_TOKEN = 'access_token',
+    LANGUAGE = 'language'
+}

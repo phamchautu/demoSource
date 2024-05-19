@@ -14,7 +14,7 @@ const SplashScreenContainer = (props: SplashScreenContainerProps) => {
         setHasAnimationPlayedOnce(true)
     }
     const isModalVisible = !(isAppReady && hasAnimationPlayedOnce)
-
+    console.log(isModalVisible)
 
     return (
         <SplashScreenView

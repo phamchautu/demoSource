@@ -1,21 +1,36 @@
 import React from 'react'
 import AppEntryView from './AppEntryView'
-import { NavigationScreenProp } from '@core/navigation/Navigator'
-import { getIsSignIn } from './AppEntrySelector'
+import Navigator, { NavigationScreenProp } from '@core/navigation/Navigator'
+import { getIsSignIn } from '../../@core/redux/selectors/AuthSelector'
 import { useAppSelector } from '@core/redux/reduxUtils'
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
+import SignInContainer from '@screen/Auth/SignIn/SignInContainer'
 
-interface AppEntryContainerProps extends NavigationScreenProp {
+interface AppEntryContainerProps {
 
 }
 
-const AppEntryContainer = (props: AppEntryContainerProps) => {
-    const { navigation } = props
-    const isSignIn = useAppSelector((state) => getIsSignIn(state))
+const MyTheme = {
+    ...DefaultTheme
+    ,
+    colors: {
+        ...DefaultTheme.colors,
+        background: '#ffffff'
+    },
+};
 
-    console.log('[isSignIn]', isSignIn)
+const AppEntryContainer = (props: AppEntryContainerProps) => {
 
     return (
-        <AppEntryView />
+        <NavigationContainer theme={MyTheme}>
+            <Navigator>
+                <Navigator.Screen
+                    name='SignIn'
+                    component={SignInContainer}
+                    options={{ headerShown: false }}
+                />
+            </Navigator>
+        </NavigationContainer>
     )
 }
 

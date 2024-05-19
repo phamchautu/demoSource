@@ -9,14 +9,18 @@ import React, { useEffect, useState } from 'react';
 
 import { Provider } from 'react-redux';
 import store from '@core/redux'
-import { NavigationContainer } from '@react-navigation/native';
-import AppEntryContainer from '@screen/AppEntry/AppEntryContainer';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import Navigator from '@core/navigation/Navigator';
+import SignInContainer from '@screen/Auth/SignIn/SignInContainer';
 import SplashScreenContainer from '@screen/SpashScreen/SpashScreenContainer';
+import AppEntryContainer from '@screen/AppEntry/AppEntryContainer';
+
 
 function App(): JSX.Element {
 
   const [isAppReady, setIsAppReady] = useState(false)
+  // const isSignIn = useAppSelector((state) => getIsSignIn(state))
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,18 +31,12 @@ function App(): JSX.Element {
     })
   }, []);
 
+
+
   return (
     <Provider store={store}>
       <SplashScreenContainer isAppReady={isAppReady} />
-      <NavigationContainer>
-        <Navigator>
-          <Navigator.Screen
-            name='AppEntry'
-            component={AppEntryContainer}
-            options={{ headerShown: false }}
-          />
-        </Navigator>
-      </NavigationContainer>
+      <AppEntryContainer />
     </Provider>
   );
 }

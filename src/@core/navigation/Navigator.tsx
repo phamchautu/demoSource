@@ -22,7 +22,7 @@ export const renderBackIcon = (navigation: any) => {
     return (
         <TouchableOpacity
             onPress={goBack}
-            style={{ marginHorizontal: 20 }}
+            style={{ marginRight: 20 }}
         >
             <ViIcon name="en-chevron-left" size={IconSize.lg} color="black" />
         </TouchableOpacity>

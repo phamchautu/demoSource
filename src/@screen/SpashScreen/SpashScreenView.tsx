@@ -20,11 +20,11 @@ const SplashScreenView = (props: SplashScreenViewProps) => {
     })
 
     return (
-        <Modal visible={isModalVisible} >
+        <Modal visible={isModalVisible}>
             <LottieView
-                style={{ width: "100%", height: "100%" }}
                 ref={animationRef}
                 source={require('@assets/lotties/splash_screen.json')}
+                style={{ width: "100%", height: "100%" }}
                 autoPlay
                 loop={false}
                 onAnimationFinish={handleAnimationFinish}

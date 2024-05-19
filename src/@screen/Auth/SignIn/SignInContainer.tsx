@@ -1,9 +1,9 @@
-import { NavigatorProps } from '@core/navigation/Navigator';
 import React from 'react'
 import { View } from 'react-native';
 import SignInView from './SignInView';
+import { NavigationScreenProp } from '@core/navigation/Navigator';
 
-interface SignInContainerProps extends NavigatorProps {
+interface SignInContainerProps extends NavigationScreenProp {
 
 }
 
