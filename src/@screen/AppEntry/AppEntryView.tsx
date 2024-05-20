@@ -1,14 +1,14 @@
+import Text from '@maui/Text';
+import ProductContainer from '@screen/Product/ProductContainer';
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
 
-const AppEntryView = () => {
+const AppEntryView = (props) => {
 
     useEffect(() => {
     }, []);
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-
-        </View>
+        <ProductContainer {...props} />
     )
 }
 

@@ -1,52 +1,30 @@
-import { NavigatorProps } from '@core/navigation/Navigator';
-import React, { useEffect, useRef, useState } from 'react'
-import { Dimensions, Image, KeyboardAvoidingView, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import SignInContainer from './SignInContainer';
-import Text from '@maui/Text';
-import Grid from '@maui/Grid';
-import ScreenBody from '@maui/ScreenBody';
-import ScreenWithKeyboard from '@maui/ScreenWithKeyboard';
-import { APP_PADDING, APP_WIDTH } from '@core/utils/constants';
-import Input from '@maui/Input';
-import Colors from '@core/utils/Colors';
-import useKeyboard from '@core/hooks/useKeyboard';
-import { NavigationScreenProp } from '@core/navigation/Navigator';
+import { LoginFormValue } from '@core/redux/thunks/AuthThunk';
 import { LoginSchema } from '@core/services/Validate';
-import { Formik, FormikProps } from 'formik';
+import { APP_PADDING, APP_WIDTH } from '@core/utils/constants';
 import Button from '@maui/Button';
+import Grid from '@maui/Grid';
+import Input from '@maui/Input';
+import ScreenBody from '@maui/ScreenBody';
+import Text from '@maui/Text';
+import { Formik, FormikProps } from 'formik';
 import LottieView from 'lottie-react-native';
+import React, { useRef, useState } from 'react';
+import { Dimensions, GestureResponderEvent, ScrollView, StyleSheet, View } from 'react-native';
 
-interface SignInViewProps extends NavigationScreenProp {
-
+interface SignInViewProps {
+    handlePressLogin: (data: LoginFormValue) => void
+    handlePressRegister: null | ((event: GestureResponderEvent) => void) | undefined;
+    handlePressForgotPassword: null | ((event: GestureResponderEvent) => void) | undefined;
 }
-export type LoginFormValue = {
-    phone_number: string;
-    password: string;
-}
-
-const appLogo = require('@assets/images/appIcon.png')
 
 const SignInView = (props: SignInViewProps) => {
 
-    const { navigation } = props;
+    const { handlePressLogin, handlePressForgotPassword, handlePressRegister } = props;
     const scrollRef = useRef<ScrollView>(null);
     const [showPassword, setShowPassword] = useState(false);
 
-    const handlePressRegister = () => {
-        console.log('Navigation Register')
-    };
-    const handlePressForgotPassword = () => {
-        console.log('Navigation ForgotPassword')
-
-    };
-
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
-    };
-    const handlePressLogin = (value: LoginFormValue) => {
-        // navigation.navigate(Screen.OTP);
-        // toast.info('hhello', { animationDuration: 50 });
-        console.log(value)
     };
 
     // useKeyboard({
